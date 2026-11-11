@@ -1,10 +1,6 @@
 name: 刷步数
 
 on:
-  #push:
-  #  branches: [ master ]
-  #pull_request:
-  #  branches: [ master ]
   schedule:
      - cron: '5 23,2,5,8,11,14 * * *'
   watch:
@@ -17,11 +13,6 @@ jobs:
     steps:
       - name: Checkout codes
         uses: actions/checkout@v4
-      - name: Update system and install zsh
-        run: |
-          sudo -E apt-get -qq update
-          sudo -E apt-get install zsh -y
-          
       - name: 初始化Python
         uses: actions/setup-python@v5
         with:
