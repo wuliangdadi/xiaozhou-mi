@@ -1,12 +1,8 @@
 name: 刷步数
 
 on:
-  #push:
-  #  branches: [ master ]
-  #pull_request:
-  #  branches: [ master ]
   schedule:
-     - cron: '5 23,2,5,8,11,14 * * *'
+     - cron: '4 23,2,5,8,11,14 * * *'
   watch:
     types: started
   workflow_dispatch:
@@ -17,15 +13,12 @@ jobs:
     steps:
       - name: Checkout codes
         uses: actions/checkout@v4
-      - name: Update system and install zsh
-        run: |
-          sudo -E apt-get -qq update
-          sudo -E apt-get install zsh -y
-          
+
       - name: 初始化Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: '3.12'
+
       - name: 开始
         env:
           CONFIG: ${{ secrets.CONFIG }}
